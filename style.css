@@ -8,7 +8,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: #4a4a4a;
 }
 
@@ -102,7 +102,7 @@ h4 {
   transition: all 0.2s;
 }
 .btn:hover {
-  font-size: 26px;
+  font-size: calc(100% + 4px);
   transition: all 0.2s;
 }
 
@@ -115,7 +115,9 @@ h4 {
 .story {
   background-color: green;
 }
-
+.back {
+  background-color: #27a79f;
+}
 input {
   border: none;
   height: 25px;
@@ -126,8 +128,8 @@ input {
 }
 
 span {
-  color: rgb(186, 67, 67);
-  font-size: inherit;
+  color: violet;
+  font-size: calc(100% + 4px);
 }
 
 /* this css is for the messsage about required fields */

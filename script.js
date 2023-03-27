@@ -9,9 +9,10 @@ let occationuser = document.querySelector("#specialDay");
 
 let uniInputs = document.querySelectorAll(".unistory");
 // buttons
-console.log(uniInputs);
 const clearbtn = document.querySelector(".clear");
 const displaybtn = document.querySelector(".story");
+const randombtn = document.querySelector(".rand");
+const backbtn = document.querySelector(".back");
 
 // story paragraph element
 const storyPara = document.querySelector(".storypara");
@@ -24,11 +25,13 @@ const btnCloseError = document.querySelector(".error-close");
 const overlayClick = document.querySelector(".overlay");
 const badMsg = document.querySelector(".errorMsg");
 
-clearbtn.addEventListener("click", function () {
+// this is the function which can clear all the inputs on the page
+function clearAllInputs() {
   for (let i = 0; i < uniInputs.length; i++) {
     uniInputs[i].value = "";
   }
-});
+}
+clearbtn.addEventListener("click", clearAllInputs);
 
 displaybtn.addEventListener("click", function () {
   let count = 0;
@@ -541,7 +544,7 @@ displaybtn.addEventListener("click", function () {
       adj1user.textContent = adj1txt;
       adj2user.textContent = adj2txt;
       actuser.textContent = acttxt;
-      verbuser.textContentr = verbtxt;
+      verbuser.textContent = verbtxt;
       occationuser.textContent = occationtxt;
     }
   }
@@ -550,4 +553,380 @@ displaybtn.addEventListener("click", function () {
 btnCloseError.addEventListener("click", function () {
   errorr.classList.add("hidden");
   overlayClick.classList.add("hidden");
+});
+
+// declaring these arrays for the random button
+// ==========================================================================declaring the adjectives=========================================================================================
+
+const adjectives = [
+  "aback",
+  "abaft",
+  "abandoned",
+  "abashed",
+  "aberrant",
+  "tiny",
+  "tired",
+  "tiresome",
+  "toothsome",
+  "torpid",
+  "tough",
+  "towering",
+  "tranquil",
+  "trashy",
+  "tremendous",
+  "tricky",
+  "trite",
+  "troubled",
+  "truculent",
+  "true",
+  "truthful",
+  "two",
+  "typical",
+  "ubiquitous",
+  "ugliest",
+  "ugly",
+  "ultra",
+  "unable",
+  "unaccountable",
+  "unadvised",
+  "unarmed",
+  "unbecoming",
+  "unbiased",
+  "uncovered",
+  "understood",
+  "undesirable",
+  "unequal",
+  "unequaled",
+  "uneven",
+  "unhealthy",
+  "uninterested",
+  "unique",
+  "unkempt",
+  "unknown",
+  "vivacious",
+  "voiceless",
+  "volatile",
+  "voracious",
+  "vulgar",
+  "wacky",
+  "waggish",
+  "well-made",
+  "well-off",
+  "well-to-do",
+  "wet",
+  "whimsical",
+  "whispering",
+  "white",
+  "whole",
+  "wholesale",
+  "wicked",
+  "wide",
+  "wide-eyed",
+  "wiggly",
+  "wild",
+  "willing",
+  "womanly",
+  "wonderful",
+  "wooden",
+  "woozy",
+  "workable",
+  "worried",
+  "worthless",
+  "wrathful",
+  "wretched",
+  "wrong",
+  "wry",
+  "xenophobic",
+  "yellow",
+  "yielding",
+  "young",
+  "youthful",
+  "yummy",
+  "zany",
+  "zealous",
+  "zesty",
+  "zippy",
+  "zonked",
+];
+// ==========================================================================declaring the noun=========================================================================================
+const nouns = [
+  "accelerator",
+  "accordion",
+  "account",
+  "accountant",
+  "actress",
+  "adapter",
+  "addition",
+  "address",
+  "bar",
+  "barbara",
+  "bead",
+  "beam",
+  "bean",
+  "bear",
+  "chick",
+  "chicken",
+  "chicory",
+  "chief",
+  "child",
+  "children",
+  "input",
+  "insect",
+  "instruction",
+  "instrument",
+  "insulation",
+  "insurance",
+  "interactive",
+  "join",
+  "joke",
+  "joseph",
+  "journey",
+  "keyboarding",
+  "kick",
+  "kidney",
+  "kilogram",
+  "kilometer",
+  "kimberly",
+  "kiss",
+  "kitchen",
+  "kite",
+  "kitten",
+  "lute",
+  "luttuce",
+  "lycra",
+  "lynx",
+  "lyocell",
+  "lyre",
+  "lyric",
+  "macaroni",
+  "machine",
+  "macrame",
+  "magazine",
+  "magic",
+  "magician",
+  "maid",
+  "mail",
+  "mailbox",
+  "mailman",
+  "makeup",
+  "malaysia",
+  "male",
+  "mall",
+  "mallet",
+  "man",
+  "potato",
+  "poultry",
+  "pound",
+  "powder",
+  "power",
+  "puppy",
+  "purchase",
+  "stopsign",
+  "stopwatch",
+  "store",
+  "storm",
+  "story",
+  "stove",
+  "swamp",
+  "swan",
+  "sweater",
+  "sweatshirt",
+  "sweatshop",
+  "tub",
+  "tuba",
+  "tuesday",
+  "tugboat",
+  "tulip",
+  "tuna",
+  "tune",
+  "turkey",
+  "turkish",
+  "turn",
+  "turnip",
+  "turnover",
+  "turret",
+  "turtle",
+  "tv",
+  "twig",
+  "unshielded",
+  "use",
+  "utensil",
+  "uzbekistan",
+  "vacation",
+  "vacuum",
+  "valley",
+  "value",
+  "van",
+  "var verbs = [aardvark",
+  "vase",
+  "vault",
+  "vegetable",
+  "vegetarian",
+  "veil",
+  "vein",
+  "velvet",
+  "venezuela",
+  "venezuelan",
+  "weed",
+  "weeder",
+  "week",
+  "wind",
+  "windchime",
+  "winter",
+  "wire",
+  "wish",
+  "witch",
+  "withdrawal",
+  "witness",
+  "wolf",
+  "woman",
+  "women",
+  "year",
+  "yellow",
+  "yew",
+  "yogurt",
+  "yoke",
+  "yugoslavian",
+  "zebra",
+  "zephyr",
+  "zinc",
+  "zipper",
+  "zone",
+  "zoo",
+  "zoology",
+];
+// ==========================================================================declaring the verb=========================================================================================
+
+const verbs = [
+  "accept",
+  "add",
+  "admire",
+  "manage",
+  "march",
+  "mark",
+  "marry",
+  "match",
+  "mate",
+  "sparkle",
+  "spell",
+  "spill",
+  "spoil",
+  "spot",
+  "spray",
+  "sprout",
+  "squash",
+  "squeak",
+  "squeal",
+  "squeeze",
+  "stain",
+  "stamp",
+  "stare",
+  "start",
+  "stay",
+  "steer",
+  "step",
+  "stir",
+  "stitch",
+  "stop",
+  "store",
+  "strap",
+  "strengthen",
+  "stretch",
+  "strip",
+  "stroke",
+  "tumble",
+  "turn",
+  "twist",
+  "type",
+  "undress",
+  "unfasten",
+  "unite",
+  "unlock",
+  "unpack",
+  "untidy",
+  "use",
+  "vanish",
+  "visit",
+  "wail",
+  "wait",
+  "walk",
+  "wander",
+  "want",
+  "warm",
+  "warn",
+  "wash",
+  "wriggle",
+  "x-ray",
+  "yawn",
+  "yell",
+  "zip",
+  "zoom",
+];
+// ==========================================================================declaring the activities=========================================================================================
+
+const activities = [
+  "Read to self",
+  "Listen to reading",
+  "Read to buddy",
+  "Word work",
+  "Work on writing",
+  "Think–Pair–Share",
+  "Case Studies and Problem-Based Learning",
+  "Debate, Role Play",
+  "Football",
+  "Hockey",
+  "Soccer",
+  "Long-distance running",
+  "Badminton",
+  "Swimming",
+  "Snowboarding",
+  "Judo",
+];
+// ==========================================================================declaring the special days=========================================================================================
+
+const universitySpecialDays = [
+  "First day of classes",
+  "Last day of classes",
+  "Finals week",
+  "Midterm exams",
+  "Graduation day",
+  "Homecoming",
+  "Sports day",
+  "Career fair",
+  "Spring break",
+  "Winter break",
+  "Registration day",
+  "Commencement ceremony",
+  "Research symposium",
+  "Alumni reunion",
+  "Parent weekend",
+  "Club fair",
+];
+// random button functionality
+randombtn.addEventListener("click", function () {
+  let randAdjective = Math.trunc(Math.random() * adjectives.length);
+  let randAdjective2 = Math.trunc(Math.random() * adjectives.length);
+
+  let randNoun = Math.trunc(Math.random() * nouns.length);
+  let randNoun2 = Math.trunc(Math.random() * nouns.length);
+
+  let randVerb = Math.trunc(Math.random() * verbs.length);
+  let randActivities = Math.trunc(Math.random() * activities.length);
+  let randSpacialDay = Math.trunc(Math.random() * universitySpecialDays.length);
+
+  document.querySelector("#noun1").value = nouns[randNoun];
+  document.querySelector("#noun2").value = nouns[randNoun2];
+  document.querySelector("#adj1").value = adjectives[randAdjective];
+  document.querySelector("#adj2").value = adjectives[randAdjective2];
+  document.querySelector("#act").value = activities[randActivities];
+  document.querySelector("#verb").value = verbs[randVerb];
+  document.querySelector("#occation").value =
+    universitySpecialDays[randSpacialDay];
+});
+
+// go back button functionality
+backbtn.addEventListener("click", function () {
+  clearAllInputs();
+  enterWords.classList.remove("hidden");
+  storyPara.classList.add("hidden");
 });
